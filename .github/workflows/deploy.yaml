@@ -36,9 +36,9 @@ jobs:
     needs: my-job
     runs-on: ubuntu-latest
     outputs:
-      myJobOutput: ${{ needs.my-job.outputs.myVariableOutput }}
+      SALIDA: ${{ needs.my-job.outputs.myVariableOutput }}
     steps:
       - name: Say hello
         run: echo "Hola Mundo $TEST" 
       - name: Say hello output
-        run: echo $myJobOutput
+        run: echo $SALIDA
