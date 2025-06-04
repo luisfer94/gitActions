@@ -12,7 +12,7 @@ jobs:
       - name: Say hello
         run: echo "Hola Mundo" 
   second-job:
-    if: false
+    if: ${{ github.ref == 'refs/heads/main' }}
     needs: my-job
     runs-on: ubuntu-latest
     steps:
