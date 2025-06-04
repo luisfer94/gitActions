@@ -9,7 +9,7 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     outputs:
-      myVariableOutput: ${{ steps.say-hello.outputs.myVariable }}
+      SALIDA: ${{ steps.say-hello.outputs.myVariable }}
     env: 
       FOO: bar
       BAR: foo
@@ -36,7 +36,7 @@ jobs:
     needs: my-job
     runs-on: ubuntu-latest
     outputs:
-      SALIDA: ${{ needs.my-job.outputs.myVariableOutput }}
+      SALIDA: ${{ needs.my-job.outputs.SALIDA }}
     steps:
       - name: Say hello
         run: echo "Hola Mundo $TEST" 
