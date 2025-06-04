@@ -8,6 +8,8 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
+    outputs:
+      myVariableOutput: ${{ steps.say-hello.outputs.myVariable }}
     env: 
       FOO: bar
       BAR: foo
@@ -33,6 +35,10 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: my-job
     runs-on: ubuntu-latest
+    outputs:
+      my-job-output: ${{ needs.my-job.outputs.myVariableOutput }}
     steps:
       - name: Say hello
         run: echo "Hola Mundo $TEST" 
+      - name: Say hello-output
+        run: echo $my-job-output 
