@@ -16,6 +16,11 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hola Mundo stage $FOO" 
+      - name: Action
+        uses: actions/checkout@v4
+      - name: List
+        run: ls -lrth
+
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: my-job
