@@ -1,4 +1,4 @@
-name: "my-job"
+name: "my-job-stage"
 
 on: 
   push: 
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
-        run: echo "Hola Mundo" 
+        run: echo "Hola Mundo stage" 
   second-job:
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: my-job
