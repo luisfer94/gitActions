@@ -4,7 +4,6 @@ on:
   push: 
     branches:
       - main
-      - stage
 
 jobs:
   my-job:
@@ -15,13 +14,16 @@ jobs:
       TEST: test
     steps:
       - name: Say hello
-        run: echo "Hola Mundo stage $FOO" 
+        id: say-hello
+        run: echo "Hola Mundo stage $FOO" >> $GITHUB_OUTPUT
       - name: List before
         run: ls -lrth
       - name: Action
         uses: actions/checkout@v4
       - name: List after
         run: ls -lrth
+      - name: print
+        run: echo $GITHUB_OUTPUT
 
   second-job:
     env:  
