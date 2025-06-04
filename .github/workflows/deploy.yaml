@@ -40,5 +40,5 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hola Mundo $TEST" 
-      - name: Say hello-output
-        run: echo $my-job-output 
+      - name: Say hello output
+        run: echo "{{$my-job-output}}"
