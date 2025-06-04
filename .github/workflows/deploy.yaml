@@ -1,4 +1,4 @@
-name: "my-job"
+name: "my-job-stage"
 
 on: 
   push: 
