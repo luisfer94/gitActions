@@ -11,3 +11,8 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hola Mundo"
+  second-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Hola Mundo"
