@@ -12,6 +12,7 @@ jobs:
     env: 
       FOO: bar
       BAR: foo
+      TEST: test
     steps:
       - name: Say hello
         run: echo "Hola Mundo stage $FOO" 
@@ -21,4 +22,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say hello
-        run: echo "Hola Mundo $BAR" 
+        run: echo "Hola Mundo $TEST" 
