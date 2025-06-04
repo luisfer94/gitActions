@@ -24,6 +24,10 @@ jobs:
         run: ls -lrth
 
   second-job:
+    env:  
+      FOO: bar
+      BAR: foo
+      TEST: test
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: my-job
     runs-on: ubuntu-latest
