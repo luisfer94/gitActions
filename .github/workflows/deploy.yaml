@@ -15,7 +15,7 @@ jobs:
     steps:
       - name: Say hello
         id: say-hello
-        run: echo "Hola Mundo stage $FOO" >> $GITHUB_OUTPUT
+        run: echo "myVariable=Hola Mundo stage $FOO" >> $GITHUB_OUTPUT
       - name: List before
         run: ls -lrth
       - name: Action
@@ -23,7 +23,7 @@ jobs:
       - name: List after
         run: ls -lrth
       - name: print
-        run: echo $GITHUB_OUTPUT
+        run: echo "${{ steps.say-hello.outputs.myVariable }}"
 
   second-job:
     env:  
