@@ -16,9 +16,11 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hola Mundo stage $FOO" 
+      - name: List before
+        run: ls -lrth
       - name: Action
         uses: actions/checkout@v4
-      - name: List
+      - name: List after
         run: ls -lrth
 
   second-job:
