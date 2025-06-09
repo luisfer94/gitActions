@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Say hello
         id: say-hello
-        run: echo "myVariable=Hola Mundo stage $FOO" >> $GITHUB_OUTPUT
+        run: echo "myVariable=Hola Mundo stage" >> $GITHUB_OUTPUT
       - name: List before
         run: ls -lrth
       - name: Action
