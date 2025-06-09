@@ -26,6 +26,15 @@ jobs:
         run: ls -lrth
       - name: print
         run: echo "${{ steps.say-hello.outputs.myVariable }}"
+      - name: Generar archivo
+        run: |
+          echo "Archivo prueba, hola" >> test.log
+      - name: Subir archivo
+        uses: actions/upload-artifact@v4
+        with:
+          name: prueba
+          path: test.log
+
 
   second-job:
     env:  
