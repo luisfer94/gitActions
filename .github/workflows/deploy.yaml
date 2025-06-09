@@ -41,4 +41,4 @@ jobs:
       - name: Say hello
         run: echo "Hola Mundo $TEST" 
       - name: Say hello output
-        run: echo $SALIDA
+        run: echo "$SALIDA"
