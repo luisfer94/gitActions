@@ -54,7 +54,6 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: prueba
-          path: test.log
       - name: Imprime contenido Artefacto
         run: cat test.log
       
