@@ -8,6 +8,52 @@ on:
 jobs:
   my-job:
     runs-on: ubuntu-latest
+    outputs:
+      salida: ${{ steps.say-hello.outputs.myVariable }}
+    env: 
+      FOO: bar
+      BAR: foo
+      TEST: test
     steps:
       - name: Say hello
-        run: echo "Hola Mundo"
+        id: say-hello
+        run: echo "myVariable=Hola Mundo stage" >> $GITHUB_OUTPUT
+      - name: List before
+        run: ls -lrth
+      - name: Action
+        uses: actions/checkout@v4
+      - name: List after
+        run: ls -lrth
+      - name: print
+        run: echo "${{ steps.say-hello.outputs.myVariable }}"
+      - name: Generar archivo
+        run: |
+          echo "Archivo prueba, hola" >> test.log
+      - name: Subir archivo
+        uses: actions/upload-artifact@v4
+        with:
+          name: prueba
+          path: test.log
+
+
+  second-job:
+    env:  
+      FOO: bar
+      BAR: foo
+      TEST: test
+      SALIDA: ${{ needs.my-job.outputs.salida }}
+    if: ${{ github.ref == 'refs/heads/main' }}
+    needs: my-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Hola Mundo $TEST" 
+      - name: Say hello output
+        run: echo "$SALIDA"
+      - name: Descargar Artefacto
+        uses: actions/download-artifact@v4
+        with:
+          name: prueba
+      - name: Imprime contenido Artefacto
+        run: cat test.log
+      
